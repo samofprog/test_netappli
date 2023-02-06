@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\ContactController::class, 'index']);
-Route::post('/', [\App\Http\Controllers\ContactController::class, 'store']);
-Route::get('/success', [\App\Http\Controllers\ContactController::class, 'successIndex']);
+Route::controller(ContactController::class)->group(function () {
+    Route::get('/', 'index');
+    Route::post('/', 'store');
+    Route::get('/success', 'showSuccessPage')->name('success');
+});
+
