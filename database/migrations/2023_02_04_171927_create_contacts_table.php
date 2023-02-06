@@ -14,9 +14,9 @@ return new class extends Migration {
     {
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('subject');
-            $table->string('message');
+            $table->string('name', 50);
+            $table->string('subject', 30);
+            $table->text('message');
             $table->timestamps();
         });
     }
